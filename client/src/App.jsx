@@ -1,14 +1,10 @@
-import { CategoriesSection, HeroBannerSection } from "./components";
 import { ThemeProvider } from "./context";
-import { MainLayout } from "./ui";
+import { AppRoutes } from "./routes";
 
 const App = () => {
   return (
     <ThemeProvider>
-      <MainLayout>
-        <HeroBannerSection />
-        <CategoriesSection />
-      </MainLayout>
+      <AppRoutes />
     </ThemeProvider>
   );
 };

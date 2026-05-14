@@ -1,0 +1,17 @@
+:root {
+  --color-primary: #a855f7;
+  --color-secondary: #facc15;
+  --color-text: #111827;
+
+  --space-1: 4px;
+  --space-2: calc(var(--space-1) * 2);
+  --space-4: calc(var(--space-1) * 4);
+  --space-8: calc(var(--space-1) * 8);
+
+  --radius-sm: 4px;
+  --radius-md: calc(var(--radius-sm) * 2);
+  --radius-lg: calc(var(--radius-sm) * 4);
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
