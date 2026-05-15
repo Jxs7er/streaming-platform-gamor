@@ -1,8 +1,9 @@
 const Footer = () => {
   return (
-    <div className=" fixed bottom-0 w-full bg-[linear-gradient(123deg,_rgba(240,240,240)_70%,_#a85ff7_30%)] opacity-90">
+    <div className=" bottom-0 w-full bg-[linear-gradient(123deg,_#fff_70%,_#FAFAFA_30%)] 
+    text-gray-800/90 opacity-90  py-8">
       {/* CONTENT */}
-      <div className="relative z-10 flex justify-around items-center py-4 text-xs">
+      <div className="relative z-10 flex justify-around items-center text-xs gap-2">
         <div>
           <h4 className="text-sm font-medium">Company</h4>
           <ul>
@@ -44,11 +45,11 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex justify-center w-full my-2 text-xs">
+      <div className="relative z-10 flex justify-center w-full my-4 text-xs">
         <span>© 2026 Stream Platform. All rights reserved.</span>
       </div>
 
-      <div className="relative z-10 flex justify-center w-full font-medium my-4">
+      <div className="relative z-10 flex justify-center w-full font-medium mt-2">
         <span>
           Built by Jxs7er.
         </span>
