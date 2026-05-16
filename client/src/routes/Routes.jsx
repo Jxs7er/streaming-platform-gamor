@@ -13,7 +13,7 @@ const appRouter = createBrowserRouter([
         <MainLayout />
       </ThemeProvider>
     ),
-    errorElement: <NotFoundPage />,
+    // errorElement: <NotFoundPage />,
     children: mainRoutes,
   },
   ...systemRoutes,

@@ -1,5 +1,5 @@
-import { CategoriesSection, HeroBannerSection } from "../../components";
-import PromotionSection from "../../components/promotion/PromotionSection";
+import { CategoriesSection, HeroBannerSection } from "@/components";
+import PromotionSection from "@/components/promotion/PromotionSection";
 
 const HomePage = () => {
   return (

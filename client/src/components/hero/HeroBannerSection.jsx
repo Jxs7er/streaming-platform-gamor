@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ForniteImage } from "../../assets";
-import { assignColorsByLetter } from "../../utils/assignColors";
+import { ForniteImage } from "@/assets";
+import { assignColorsByLetter } from "@/utils";
 
 const teams = [
   {

@@ -1,4 +1,4 @@
-import { HomePage, RegisterPage, SignInPage } from "../../pages";
+import { HomePage, RegisterPage, SignInPage } from "@/pages";
 
 const authRoutes = [
   {

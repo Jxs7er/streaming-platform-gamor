@@ -1,0 +1,1 @@
+export { assignColorsByLetter } from "./assignColors";

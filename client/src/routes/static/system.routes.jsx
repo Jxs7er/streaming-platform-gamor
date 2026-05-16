@@ -1,7 +1,5 @@
-// import HomePage from "../../pages/home/home.page";
-
 import { Navigate } from "react-router";
-import { ForbiddenPage, NotFoundPage } from "../../pages";
+import { ForbiddenPage, NotFoundPage } from "@/pages";
 
 const redirect = (to) => <Navigate to={to} />;
 

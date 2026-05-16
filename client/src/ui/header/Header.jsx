@@ -29,21 +29,23 @@ const Header = () => {
       </div>
       <div className="self-center relative">
         <div>
-          <span
-            className="font-semibold text-gray-800/60
+          <Link to={`/`}>
+            <span
+              className="font-semibold text-gray-800/80
         text-2xl tracking-wide"
-          >
-            gamor.
-          </span>
+            >
+              gamor
+            </span>
+          </Link>
           {/* <hr className="border-2 mt-0.5 border-gray-100/80"/> */}
         </div>
 
         <div
           className="absolute rounded-full left-0 
-        bottom-0 ml-3 h-8 w-8 blur-sm bg-white/30"
+        top-0 h-6 w-6 bg-white/30 -ml-4 backdrop-blur-sm"
         />
       </div>
-      <div className="flex gap-1 items-center">
+      <div className="flex gap-1 items-center text-sm font-medium">
         <Link to={`/auth/signin`} className="px-4 py-2 ">
           Sign In
           <span></span>
@@ -51,7 +53,7 @@ const Header = () => {
         <Link
           to={`/auth/signup`}
           className="px-4 py-2 rounded-full 
-        bg-gradient-to-r from-amber-200 to-purple-300"
+        bg-gradient-to-r bg-gray-100 border"
         >
           <span className="text-gray-800/90">Create an account</span>
         </Link>

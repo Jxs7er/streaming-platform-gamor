@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className=" bottom-0 w-full bg-[linear-gradient(123deg,_#fff_70%,_#FAFAFA_30%)] 
+    <div className=" self-end w-full bg-[linear-gradient(123deg,_#fff_70%,_#FAFAFA_30%)] 
     text-gray-800/90 opacity-90  py-8">
       {/* CONTENT */}
       <div className="relative z-10 flex justify-around items-center text-xs gap-2">
