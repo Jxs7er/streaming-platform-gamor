@@ -70,11 +70,11 @@ const CategoriesSection = () => {
 
   return (
     <div className="bg-[linear-gradient(123deg,_#FAFAFA_80%,_#Fff_20%)] pt-4">
-      <TrendsCategories trends={trends} ref={ref} show={show} />
+      <TrendsCategories trends={trends} ref={ref} />
 
       <hr className="my-6" />
 
-      <GroupedCategories groupByType={groupByType} ref={ref} show={show} />
+      <GroupedCategories groupByType={groupByType} ref={ref} />
     </div>
   );
 };

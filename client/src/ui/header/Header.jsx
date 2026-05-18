@@ -4,6 +4,8 @@ import { useAuth } from "@/context";
 import { FingerPrintIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router";
 
+// import styles from "Hea"
+
 const menu = [
   { id: "home-header", name: "Home", path: "/" },
   { id: "streams-header", name: "Streams", path: "#" },

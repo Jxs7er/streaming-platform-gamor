@@ -1,0 +1,15 @@
+[theme="light"] {
+  --text-primary: var(--color-gray-800);
+  --text-secondary: var(--color-gray-600);
+
+  --bg-primary: var(--color-gray-50);
+  --bg-secondary: var(--color-gray-100);
+
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(0, 0, 0, 0.08);
+
+  --purple: #a855f7;
+  --fuchsia: #d946ef;
+  --amber: #f59e0b;
+  --blue: #3b82f6;
+}

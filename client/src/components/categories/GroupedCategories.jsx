@@ -1,4 +1,4 @@
-const GroupedCategories = ({groupByType, ref, show }) => {
+const GroupedCategories = ({groupByType, ref }) => {
   return (
     <div className="px-16 flex flex-col gap-y-2 w-full bg-gray-100 mb-4 py-2">
       {Object.entries(groupByType).map((t) => {
@@ -29,7 +29,6 @@ const GroupedCategories = ({groupByType, ref, show }) => {
                 hover:bg-white/10
                 transition-all duration-500
                 flex flex-col justify-between
-                ${show ? "opacity-100 translate-y-0 " : "opacity-0 translate-y-6"}
               `}
                   >
                     <span className="text-sm font-semibold text-gray-800/90">
