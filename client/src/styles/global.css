@@ -1,24 +1,20 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BASE */
 body {
   font-family: system-ui, sans-serif;
   background-color: #f9fafb;
   color: #111827;
 }
-
-/* LINKS */
+/* 
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* LISTAS */
 ul {
   list-style: none;
-}
+} */

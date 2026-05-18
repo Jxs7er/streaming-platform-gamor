@@ -3,6 +3,7 @@ import { GamesServices } from "@/services/modules";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { SearchingGames } from "..";
+import { LoadingDots } from "../common/loadings";
 
 const HeroBannerSection = () => {
   const [hover, setHover] = useState(false);
@@ -48,7 +49,13 @@ const HeroBannerSection = () => {
     return () => clearTimeout(id);
   }, [gameIndex, games.length, videoDuration]);
 
-  if (loading) return <span>Loading...</span>;
+  if (loading)
+    return (
+      <div className="h-[50vh] w-full flex justify-center items-center">
+        <LoadingDots loading={loading} color="bg-gray-900/15"/>
+      </div>
+    );
+    
   if (games.length === 0) return null;
   const currentGame = games[gameIndex];
 
@@ -89,7 +96,7 @@ const HeroBannerSection = () => {
       {/* Hero Banner */}
       <div
         className="relative overflow-hidden w-full  
-      py-24 h-[400px] flex justify-around items-center gap-10 h-full "
+      py-24 h-[400px] flex justify-around items-center gap-10"
       >
         {/* Trailer */}
         <div className="relative w-full h-screen overflow-hidden bg-black">
@@ -144,7 +151,7 @@ const HeroBannerSection = () => {
                 key={index}
                 className={`
                   relative w-32 h-40 md:w-44 md:h-60 rounded-2xl
-                  overflow-hidden opacity-80
+                  overflow-hidden opacity-90
                   border border-white/10
                   bg-white/5 backdrop-blur-2xl
                   shadow-[0_25px_80px_rgba(168,85,247,0.35)]

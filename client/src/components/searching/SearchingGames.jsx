@@ -181,7 +181,7 @@ const SearchingGames = ({ currentGame, handleSearchNow, handleJoinTo }) => {
           background: "#F8F8F8",
           //   borderRadius: 16,
           overflow: "hidden",
-          width: "100%",
+          width: 380,
           height: 400,
           display: "flex",
           flexDirection: "column",

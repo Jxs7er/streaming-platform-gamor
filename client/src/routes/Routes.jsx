@@ -15,7 +15,7 @@ const appRouter = createBrowserRouter([
         </AuthProvider>
       </LoadingProvider>
     ),
-    // errorElement: <NotFoundPage />,
+    errorElement: <NotFoundPage />,
     children: mainRoutes,
   },
   ...systemRoutes,
