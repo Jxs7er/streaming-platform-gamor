@@ -1,4 +1,10 @@
-const SubmitButton = ({ clientReady, _class, loading, labelLoading }) => {
+const SubmitButton = ({
+  clientReady,
+  _class,
+  loading,
+  labelLoading,
+  message,
+}) => {
   return (
     <button
       type="submit"
@@ -15,7 +21,7 @@ const SubmitButton = ({ clientReady, _class, loading, labelLoading }) => {
         }`
       }
     >
-      {loading ? labelLoading : "Sign In"}
+      {loading ? labelLoading : (message ?? "Sign In")}
     </button>
   );
 };

@@ -1,94 +1,56 @@
-import {
-  ForniteImage,
-  CS2,
-  Dota2Image,
-  ValorantImage,
-  WarzoneImage,
-} from "@/assets";
-import { assignColorsByLetter } from "@/utils";
-import { useEffect, useState } from "react";
-
-const games = [
-  {
-    id: "fortnite",
-    name: "Fortnite",
-    image: ForniteImage,
-    searches: [
-      {
-        team: "Deadline",
-        players: [{ name: "Adam" }, { name: "Killer" }, { name: "Smith" }],
-      },
-    ],
-  },
-  {
-    id: "valorant",
-    name: "Valorant",
-    image: ValorantImage,
-    searches: [
-      {
-        team: "Deadline",
-        players: [{ name: "Adam" }, { name: "Killer" }, { name: "Smith" }],
-      },
-    ],
-  },
-  {
-    id: "csgo",
-    name: "Counter-Strike 2",
-    image: CS2,
-    searches: [
-      {
-        team: "Deadline",
-        players: [{ name: "Adam" }, { name: "Killer" }, { name: "Smith" }],
-      },
-    ],
-  },
-  {
-    id: "dota",
-    name: "Dota 2",
-    image: Dota2Image,
-    searches: [
-      {
-        team: "Deadline",
-        players: [{ name: "Adam" }, { name: "Killer" }, { name: "Smith" }],
-      },
-    ],
-  },
-  {
-    id: "warzone",
-    name: "COD: Warzone",
-    image: WarzoneImage,
-    searches: [
-      {
-        team: "Deadline",
-        players: [{ name: "Adam" }, { name: "Killer" }, { name: "Smith" }],
-      },
-    ],
-  },
-];
+import { useAuth } from "@/context";
+import { GamesServices } from "@/services/modules";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
+import { SearchingGames } from "..";
 
 const HeroBannerSection = () => {
   const [hover, setHover] = useState(false);
 
-  const [gameIndex, setGameIndex] = useState(0);
-  const currentGame = games[gameIndex];
-
   const [transitioning, setTransitioning] = useState(false);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setGameIndex((prev) => (prev + 1) % games.length);
-  //   }, 5000);
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
-  //   return () => clearInterval(interval);
-  // }, []);
+  const [loading, setLoading] = useState(false);
+  const [games, setGames] = useState([]);
+
+  const [gameIndex, setGameIndex] = useState(0);
+  const [videoDuration, setVideoDuration] = useState(5000);
+
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      changeGame((gameIndex + 1) % games.length);
-    }, 5000);
+    const fetchGames = async () => {
+      setLoading(true);
 
-    return () => clearInterval(interval);
-  }, [gameIndex]);
+      try {
+        const res = await GamesServices.get();
+        if (!res.ok) return;
+        setGames(res.data);
+      } catch (error) {
+        setGames([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGames();
+  }, []);
+
+  useEffect(() => {
+    if (!games.length) return;
+
+    const id = setTimeout(() => {
+      changeGame((gameIndex + 1) % games.length);
+    }, videoDuration);
+
+    return () => clearTimeout(id);
+  }, [gameIndex, games.length, videoDuration]);
+
+  if (loading) return <span>Loading...</span>;
+  if (games.length === 0) return null;
+  const currentGame = games[gameIndex];
 
   const changeGame = (newIndex) => {
     setTransitioning(true);
@@ -107,229 +69,149 @@ const HeroBannerSection = () => {
     setGameIndex((prev) => (prev - 1) % games.length);
   };
 
+  const handleSearchNow = () => {
+    if (!user) navigate("/auth/signin");
+    console.log("here");
+
+    // Definir el Auth Context
+    // Y agregarlo a la lista de busqueda
+  };
+
+  const handleJoinTo = async (payload) => {
+    try {
+      const res = await GamesServices.joinTo(payload);
+      if (!res.ok) return;
+    } catch (error) {}
+  };
+
   return (
-    <div className="relative gap-0 py-5 overflow-hidden pb-14">
+    <div className="flex flex-col gap-x-1 md:gap-x-0 md:flex-row md:justify-between items-center w-full">
+      {/* Hero Banner */}
       <div
-        className={`absolute inset-0 mask-b-from-20% mask-b-to-80% bg-center 
-          bg-cover saturate-150 blur-3xl scale-125
-          transition-all duration-500 ease-in-out
-          ${transitioning ? "opacity-0 scale-110" : "opacity-100 scale-125"}`}
-        style={{
-          backgroundImage: `url(${currentGame.image})`,
-        }}
-      />
-
-      <div className="absolute inset-0 bg-black/15 z-10" />
-      {/* <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-10% to to-transparent" /> */}
-
-      {/* Title */}
-      <div
-        className="animate-pulse relative
-      shadow-2xs -mb-14 px-2 py-1 m-0 flex-col flex justify-center items-center"
+        className="relative overflow-hidden w-full  
+      py-24 h-[400px] flex justify-around items-center gap-10 h-full "
       >
-        <div className="relative flex justify-center items-center py-6">
+        {/* Trailer */}
+        <div className="relative w-full h-screen overflow-hidden bg-black">
+          <video
+            ref={videoRef}
+            onLoadedMetadata={() => {
+              const duration = videoRef.current?.duration || 5;
+              setVideoDuration(duration * 1000);
+            }}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover blur-sm"
+          >
+            <source src={currentGame.video} />
+          </video>
+
+          {/* DARK OVERLAY */}
+          <div className="absolute inset-0 bg-black/20" />
+        </div>
+        {/* Title */}
+        <div
+          className="absolute bottom-0 z-40 w-full 
+          bg-black/50 md:bg-white/95 backdrop-blur-3xl md:border-y 
+          rounded-none shadow-2xl px-6 m-0 py-1 
+          flex-col flex justify-center items-center"
+        >
+          {/* <div className="relative flex justify-start w-full items-center py-6"> */}
           <h2
-            className={`uppercase tracking-widest text-9xl text-white/70 
+            className={`tracking-widest text-xl lowercase text-black/70 
             font-semibold drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]
-            transition-all duration-500
+            transition-all duration-500 
             ${transitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}
           >
-            {currentGame.name}
+            / {currentGame.name}
           </h2>
+          {/* </div> */}
         </div>
-        {/* <div className="absolute w-full h-full shadow-[0_0_60px_rgba(217,70,239,0.7)]" /> */}
-      </div>
 
-      <div className="sticky top-0 flex items-center justify-center z-30">
-        <div
-          className="flex justify-center items-center gap-0 rounded-lg
-          w-[80vw] overflow-hidden shadow-[0_40px_100px_rgba(168,85,247,0.35)] 
-       "
-        >
-          {/* Hero */}
-          <div
-            className="relative bg-white-400/20 backdrop-blur-sm h-[400px] w-1/2 flex 
-        justify-center items-center "
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
-            {/* Background Image */}
-            <div className="absolute h-full overflow-hidden ">
-              <img
-                src={currentGame.image}
-                className={`object-center object-contain w-full h-full
-            transition-all duration-500 ease-in-out
-            ${transitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}
-              />
-            </div>
+        {/* Hero */}
+        <div className="absolute inset-0 z-20 bottom-6 flex items-end justify-center gap-4 md:gap-8">
+          {[1, 2, 3].map((_, index) => {
+            const rotations = [
+              "rotate-6 translate-y-4",
+              "rotate-0 -translate-y-6 scale-110 z-10",
+              "-rotate-6 translate-y-4",
+            ];
 
-            {hover && (
+            return (
               <div
-                className="relative flex flex-col 
-          justify-around items-center bg-gradient-to-r from-black/20 via-black/50 to-black/40
-          h-full w-full p-8 transition-all duration-1000 ease-in"
+                key={index}
+                className={`
+                  relative w-32 h-40 md:w-44 md:h-60 rounded-2xl
+                  overflow-hidden opacity-80
+                  border border-white/10
+                  bg-white/5 backdrop-blur-2xl
+                  shadow-[0_25px_80px_rgba(168,85,247,0.35)]
+                  
+                  transition-all duration-700 ease-out
+                  hover:scale-105 hover:-translate-y-2
+                  
+                  ${rotations[index]}
+                  ${transitioning ? "opacity-0 scale-90 blur-sm" : "opacity-100 scale-100 blur-0"}
+                `}
               >
-                <h3
-                  className="
-                  text-white
-                  text-3xl
-                  font-bold
-                  mb-2
-                "
-                >
-                  Enter the Battle
-                </h3>
-
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Experience competitive matches, live events and next-gen
-                  gaming streams with immersive visuals.
-                </p>
-                <button
-                  className="
-                py-4
-                w-1/3
-                rounded-2xl
-                font-semibold
-                text-white
-                bg-gradient-to-r
-                from-fuchsia-500
-                to-purple-600
-                shadow-[0_0_30px_rgba(217,70,239,0.6)]
-                hover:scale-[1.02]
-                transition-all
-                duration-300
-              "
-                >
-                  Watch Live
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Right Side */}
-          <div
-            className="bg-white-400/20 backdrop-blur-sm h-[400px] w-1/3 
-        flex flex-col justify-around items-center py-6 gap-y-2"
-          >
-            {/* Choose Platform */}
-            <div className="w-[80%] px-4 py-1 rounded-xl bg-black/10 text-gray-50">
-              <div className="">
-                <h4 className="text-sm tracking-wide font-medium">
-                  Choose Platform
-                </h4>
-              </div>
-              <div
-                className="w-full bg-black/20 flex items-center justify-center 
-            gap-x-1 rounded-full p-1 mt-2"
-              >
-                <button className="px-4 py-2 rounded-full bg-white/20">
-                  <span className="text-xs font-normal">Party</span>
-                </button>
-                <button className="px-4 py-2 rounded-full bg-white/20">
-                  <span className="text-xs font-normal">Match</span>
-                </button>
-                <button className="px-4 py-2 rounded-full bg-white/20">
-                  <span className="text-xs font-normal">Streams</span>
-                </button>
-              </div>
-            </div>
-            {/* Search Now */}
-            <div className="w-[80%] rounded-xl bg-black/10 text-gray-50 h-full">
-              <div className="px-2 py-1">
-                <h4 className="text-sm tracking-wide  font-medium">
-                  Searching Games
-                </h4>
-              </div>
-              <div className="w-full px-2">
+                {/* Glow */}
                 <div
-                  className="w-full bg-black/20 flex flex-col items-center justify-center 
-            gap-x-1 rounded-md p-2 mt-2 text-xs"
-                >
-                  {/* Titulo del juego */}
-                  <div className="flex justify-around items-center w-full px-1">
-                    {/* TItulo */}
-                    <div className="w-2/3">
-                      <h5 className="text-sm tracking-wide font-medium">
-                        Fornite
-                      </h5>
-                    </div>
+                  className="absolute inset-0 bg-gradient-to-t 
+                from-black/60 via-transparent to-white/10 z-10"
+                />
 
-                    {/* Boton de Filtro*/}
-                    <div>
-                      <button className="p-1 bg-gray-100/10 text-white rounded-full">
-                        Filters
-                      </button>
-                      {/* <span>Fornite</span> */}
-                    </div>
-                  </div>
-                  {/* <hr className="my-2 "/> */}
-                  <div className="h-36 w-full mt-4">
-                    <div
-                      className="overflow-y-auto p-0 m-0 w-full 
-                  flex flex-col justify-between items-center gap-1 h-2/3"
-                    >
-                      <div className="flex justify-around items-center gap-1 w-full">
-                        <span
-                          className="w-6 h-6 bg-fuchsia-800 text-center 
-                    align-middle content-center font-semibold rounded-full"
-                        >
-                          1
-                        </span>
-                        <span className="text-sm font-semibold">Deadline</span>
+                {/* Image */}
+                <img
+                  src={currentGame.image[index]}
+                  alt={currentGame.name}
+                  className={`
+                    w-full h-full object-cover object-center
+                    transition-transform duration-700
+                    hover:scale-110
+                  ${index !== 1 && "blur-[.6px]"}
+                    `}
+                />
 
-                        <div className="flex items-center justify-center gap-0">
-                          <div
-                            className={`w-6 h-6 overflow-hidden rounded-full -ml-2 bg-${assignColorsByLetter("Adam")}-300 
-                          text-gray-950/80 text-center content-center font-semibold`}
-                          >
-                            <span>{"Adam".charAt(0)}</span>
-                          </div>
-                          <div
-                            className={`w-6 h-6 overflow-hidden rounded-full -ml-2 bg-${assignColorsByLetter("Killer")}-300 
-                          text-gray-950/80 text-center content-center font-semibold`}
-                          >
-                            <span>{"Killer".charAt(0)}</span>
-                          </div>
-                          <div
-                            className={`w-6 h-6 overflow-hidden rounded-full -ml-2 bg-${assignColorsByLetter("Smith")}-300 
-                          text-gray-950/80 text-center content-center font-semibold`}
-                          >
-                            <span>{"Smith".charAt(0)}</span>
-                          </div>
-                          <div className="text-xs mx-1">
-                            <span>+2 more</span>
-                          </div>
-                        </div>
-
-                        <button className="w-6 h-6 bg-gray-100/10 text-white text-center content-center rounded-full">
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <button
-                      className="my-2 w-full h-fi 
-                      py-4
-                      rounded-2xl
-                      font-semibold
-                      text-white
-                      bg-gradient-to-r
-                      from-fuchsia-500
-                      to-purple-600
-                      shadow-[0_0_30px_rgba(217,70,239,0.6)]
-                      hover:scale-[1.02]
-                      transition-all
-                      duration-300
-                    "
-                    >
-                      <span> Search Now </span>
-                    </button>
-                  </div>
-                </div>
+                {/* Reflection */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-br
+                from-white/20 via-transparent to-transparent
+                  opacity-40 pointer-events-non"
+                />
               </div>
-            </div>
+            );
+          })}
+        </div>
+
+        {/* Background Blurred */}
+        <div
+          className="absolute blur-3xl z-0 flex justify-center 
+          items-end top-0 bg-transparent h-full w-full pb-1"
+        >
+          <div
+            className={`w-56 h-72 backdrop-blur-2xl rounded-md rotate-2 
+          object-center object-contain overflow-hidden border-2 
+          shadow-[0_40px_100px_rgba(168,85,247,0.35)]
+          transition-all duration-500 ease-in-out 
+                ${transitioning ? "opacity-0 scale-95" : "opacity-100 scale-[100%]"} `}
+          >
+            <img
+              src={currentGame.image[0]}
+              className={`object-center object-cover w-full h-full saturate-200
+                `}
+            />
           </div>
         </div>
       </div>
+
+      {/* Search Games */}
+      <SearchingGames
+        currentGame={currentGame}
+        handleSearchNow={handleSearchNow}
+        handleJoinTo={handleJoinTo}
+      />
     </div>
   );
 };

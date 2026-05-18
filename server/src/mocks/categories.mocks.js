@@ -1,0 +1,17 @@
+export const categories = [
+  { id: 1, name: "All", path: "#" },
+  { id: 2, name: "Live", path: "#" },
+  { id: 3, name: "Gaming", path: "#" },
+  { id: 4, name: "Esports", path: "#" },
+  { id: 5, name: "FPS", path: "#" },
+  { id: 6, name: "MOBA", path: "#" },
+  { id: 7, name: "Battle Royale", path: "#" },
+  { id: 8, name: "RPG", path: "#" },
+  { id: 9, name: "Indie", path: "#" },
+  { id: 10, name: "Speedruns", path: "#" },
+  { id: 11, name: "Highlights", path: "#" },
+  { id: 12, name: "Just Chatting", path: "#" },
+  { id: 13, name: "Horror", path: "#" },
+  { id: 14, name: "Strategy", path: "#" },
+  { id: 15, name: "Simulation", path: "#" },
+];

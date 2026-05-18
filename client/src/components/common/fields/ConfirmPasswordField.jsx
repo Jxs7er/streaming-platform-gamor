@@ -2,7 +2,7 @@ import { PasswordInput } from "../inputs";
 
 const ConfirmPasswordField = ({ form, onChange, confirmError, _class }) => {
   return (
-    <PasswordInputnput
+    <PasswordInput
       label="Confirm the password"
       name="confirm"
       value={form.confirm || ""}

@@ -110,7 +110,7 @@ const SignInPage = () => {
                 </div>
 
                 {/* CAPTCHA */}
-                <ReCaptcha status={status} />
+                {/* <ReCaptcha status={status} /> */}
 
                 {/* Submit */}
                 <SubmitButton

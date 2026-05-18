@@ -4,11 +4,13 @@ import PromotionSection from "@/components/promotion/PromotionSection";
 const HomePage = () => {
   return (
     <div>
-      <HeroBannerSection />
+      <div className="flex items-stretch justify-center">
+        <HeroBannerSection />
+      </div>
+      <PromotionSection />
       {/* <hr />
       <hr /> */}
       <CategoriesSection />
-      <PromotionSection />
     </div>
   );
 };

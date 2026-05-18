@@ -1,18 +1,21 @@
 const PromotionSection = () => {
   return (
-    <div className="my-2 px-6 py-4 ">
-      <div className="flex justify-around items-center">
+    <div className="px-6 py-4 w-full self-stretch bg-gray-950/90">
+      <div className="flex justify-between px-6 items-center">
         {/* Title */}
         <div
           className="flex flex-col gap-2 
-        items-center justify-start text-gray-800/80"
+        items-center justify-start"
         >
-          <h4 className="font-semibold text-gray-800/80 text-2xl">
+          <h4 className="font-semibold text-gray-100/80 text-2xl">
             Start{" "}
             <span className="font-medium text-amber-400"> streaming </span>{" "}
             games differently
           </h4>
-          <span className="text-sm font-medium text-gray-800/50"> gamor now has stream party platform</span>
+          <span className="text-sm font-medium text-gray-100/80">
+            {" "}
+            gamor now has stream party platform
+          </span>
         </div>
         {/* Button */}
         <div className="flex items-center text-sm">

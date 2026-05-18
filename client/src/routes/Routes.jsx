@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { LoadingProvider, ThemeProvider } from "../context";
+import { AuthProvider, LoadingProvider, ThemeProvider } from "../context";
 import { MainLayout } from "../ui";
 import { mainRoutes } from "./config/main.routes";
 import { systemRoutes } from "./static";
@@ -10,9 +10,9 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: (
       <LoadingProvider>
-        <ThemeProvider>
+        <AuthProvider>
           <MainLayout />
-        </ThemeProvider>
+        </AuthProvider>
       </LoadingProvider>
     ),
     // errorElement: <NotFoundPage />,
