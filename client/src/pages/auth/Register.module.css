@@ -45,11 +45,7 @@
 
   border-radius: 0.375rem;
 
-  background: linear-gradient(
-    to bottom right,
-    rgb(79 70 229),
-    rgb(107 33 168)
-  );
+  background: linear-gradient(to bottom right, rgb(79 70 229), rgb(107 33 168));
 }
 
 .hero_cards_container {
@@ -86,62 +82,48 @@
 
   transition-duration: 300ms;
 
-  transition-timing-function:
-    cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .floating_card:hover {
   transform: scale(1.02);
 }
 
-/* =========================
-   CARD VARIANTS
-========================= */
-
 .card_elden {
-  margin-top: 1rem;
+  margin-top: 2rem;
 
-  background-color:
-    color-mix(in srgb, white, transparent 95%);
+  position: absolute;
 
-  border:
-    1px solid
-    color-mix(in srgb, white, transparent 90%);
+  left: 0.5rem;
+  top: -5rem;
+  background-color: color-mix(in srgb, white, transparent 95%);
+
+  border: 1px solid color-mix(in srgb, white, transparent 90%);
 }
 
 .card_tournament {
   position: absolute;
 
   right: 0.5rem;
-  top: -3rem;
+  top: -8rem;
 
-  background-color:
-    color-mix(in srgb, rgb(245 158 11), transparent 55%);
+  background-color: color-mix(in srgb, rgb(245 158 11), transparent 55%);
 
-  border:
-    1px solid
-    color-mix(in srgb, rgb(252 211 77), transparent 90%);
+  border: 1px solid color-mix(in srgb, rgb(252 211 77), transparent 90%);
 }
 
 .card_party {
   position: absolute;
 
   left: 0.5rem;
-  top: -9rem;
+  top: -14rem;
 
   transform: rotate(-2deg);
 
-  background-color:
-    color-mix(in srgb, rgb(147 51 234), transparent 20%);
+  background-color: color-mix(in srgb, rgb(147 51 234), transparent 20%);
 
-  border:
-    1px solid
-    color-mix(in srgb, rgb(216 180 254), transparent 90%);
+  border: 1px solid color-mix(in srgb, rgb(216 180 254), transparent 90%);
 }
-
-/* =========================
-   ICONS
-========================= */
 
 .icon_container {
   width: 3.5rem;
@@ -156,23 +138,16 @@
 }
 
 .icon_white {
-  background-color:
-    color-mix(in srgb, white, transparent 80%);
+  background-color: color-mix(in srgb, white, transparent 80%);
 }
 
 .icon_yellow {
-  background-color:
-    color-mix(in srgb, rgb(254 249 195), transparent 80%);
+  background-color: color-mix(in srgb, rgb(254 249 195), transparent 80%);
 }
 
 .icon_purple {
-  background-color:
-    color-mix(in srgb, rgb(243 232 255), transparent 80%);
+  background-color: color-mix(in srgb, rgb(243 232 255), transparent 80%);
 }
-
-/* =========================
-   STREAM INFO
-========================= */
 
 .stream_info {
   display: flex;
@@ -216,14 +191,10 @@
   color: rgb(255 255 255 / 0.6);
 }
 
-/* =========================
-   MESSAGE SLIDER
-========================= */
-
 .message_slider {
   position: absolute;
 
-  top: 8rem;
+  top: 2.5rem;
   right: -2.5rem;
 
   width: 14rem;
@@ -240,12 +211,9 @@
 
   border-radius: 0.75rem;
 
-  background-color:
-    color-mix(in srgb, black, transparent 75%);
+  background-color: color-mix(in srgb, black, transparent 75%);
 
-  border:
-    1px solid
-    color-mix(in srgb, black, transparent 95%);
+  border: 1px solid color-mix(in srgb, black, transparent 95%);
 
   backdrop-filter: blur(24px);
 }
@@ -258,18 +226,13 @@
 
   color: rgb(255 255 255 / 0.7);
 
-  transition-property:
-    transform,
-    opacity;
+  transition-property: transform, opacity;
 
   transition-duration: 500ms;
 
-  transition-timing-function:
-    cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  will-change:
-    transform,
-    opacity;
+  will-change: transform, opacity;
 }
 
 .message_text_transitioning {
@@ -306,15 +269,9 @@
 
   color: white;
 
-  animation:
-    pulse 2s
-    cubic-bezier(0.4, 0, 0.6, 1)
-    infinite;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
-  filter:
-    drop-shadow(
-      0 0 10px rgba(255,255,255,.9)
-    );
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
 }
 
 /* =========================
@@ -339,8 +296,7 @@
 
   background-color: transparent;
 
-  border:
-    1px solid rgb(229 231 235);
+  border: 1px solid rgb(229 231 235);
 
   backdrop-filter: blur(40px);
 
@@ -358,8 +314,7 @@
 
   padding-bottom: 0.75rem;
 
-  border-bottom:
-    1px solid rgb(229 231 235);
+  border-bottom: 1px solid rgb(229 231 235);
 }
 
 .form_title {

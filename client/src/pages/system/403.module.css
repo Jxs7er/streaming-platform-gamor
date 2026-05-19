@@ -1,31 +1,18 @@
 .page {
-  /* min-h-screen */
   min-height: 100vh;
 
-  /* flex */
   display: flex;
-
-  /* items-center */
   align-items: center;
-
-  /* justify-center */
   justify-content: center;
-
-  /* px-6 */
   padding-inline: 1.5rem;
 
-  background:
-    linear-gradient(
-      to bottom right,
-      rgb(3 7 18),
-      black,
-      rgb(17 24 39)
-    );
+  background: linear-gradient(
+    to bottom right,
+    rgb(3 7 18),
+    black,
+    rgb(17 24 39)
+  );
 }
-
-/* =========================
-   CARD
-========================= */
 
 .card {
   position: relative;
@@ -37,50 +24,28 @@
 
   border-radius: 1.5rem;
 
-  border:
-    1px solid
-    color-mix(
-      in srgb,
-      rgb(245 158 11),
-      transparent 90%
-    );
+  border: 1px solid color-mix(in srgb, rgb(245 158 11), transparent 90%);
 
-  background-color:
-    color-mix(
-      in srgb,
-      white,
-      transparent 95%
-    );
+  background-color: color-mix(in srgb, white, transparent 95%);
 
   backdrop-filter: blur(48px);
 
   padding: 2.5rem;
 
-  box-shadow:
-    0 0 80px
-    rgba(245, 158, 11, 0.12);
+  box-shadow: 0 0 80px rgba(245, 158, 11, 0.12);
 }
-
-/* =========================
-   GLOW
-========================= */
 
 .glow {
   position: absolute;
 
   inset: 0;
 
-  background:
-    radial-gradient(
-      circle at top,
-      rgba(245, 158, 11, 0.12),
-      transparent 60%
-    );
+  background: radial-gradient(
+    circle at top,
+    rgba(245, 158, 11, 0.12),
+    transparent 60%
+  );
 }
-
-/* =========================
-   CONTENT
-========================= */
 
 .content {
   position: relative;
@@ -97,10 +62,6 @@
   gap: 1.5rem;
 }
 
-/* =========================
-   ICON CONTAINER
-========================= */
-
 .icon_wrapper {
   width: 5rem;
   height: 5rem;
@@ -112,12 +73,7 @@
   justify-content: center;
   align-items: center;
 
-  background-color:
-    color-mix(
-      in srgb,
-      rgb(245 158 11),
-      transparent 90%
-    );
+  background-color: color-mix(in srgb, rgb(245 158 11), transparent 90%);
 }
 
 .icon {
@@ -126,10 +82,6 @@
 
   color: rgb(251 191 36);
 }
-
-/* =========================
-   TITLE GROUP
-========================= */
 
 .title_group {
   display: flex;
@@ -153,12 +105,7 @@
 
   font-weight: 600;
 
-  color:
-    color-mix(
-      in srgb,
-      white,
-      transparent 10%
-    );
+  color: color-mix(in srgb, white, transparent 10%);
 }
 
 .description {
@@ -167,17 +114,8 @@
 
   max-width: 28rem;
 
-  color:
-    color-mix(
-      in srgb,
-      white,
-      transparent 40%
-    );
+  color: color-mix(in srgb, white, transparent 40%);
 }
-
-/* =========================
-   ACTIONS
-========================= */
 
 .actions {
   display: flex;
@@ -188,10 +126,6 @@
 
   margin-top: 1rem;
 }
-
-/* =========================
-   BUTTONS
-========================= */
 
 .back_button,
 .home_button {
@@ -204,65 +138,33 @@
   padding-inline: 1.25rem;
   padding-block: 0.625rem;
 
-  transition-property:
-    background-color,
-    color,
-    transform,
-    opacity,
-    box-shadow;
+  transition-property: background-color, color, transform, opacity, box-shadow;
 
   transition-duration: 300ms;
 
-  transition-timing-function:
-    cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* BACK */
-
 .back_button {
-  background-color:
-    color-mix(
-      in srgb,
-      white,
-      transparent 90%
-    );
+  background-color: color-mix(in srgb, white, transparent 90%);
 
-  color:
-    color-mix(
-      in srgb,
-      white,
-      transparent 20%
-    );
+  color: color-mix(in srgb, white, transparent 20%);
 }
 
 .back_button:hover {
-  background-color:
-    color-mix(
-      in srgb,
-      white,
-      transparent 80%
-    );
+  background-color: color-mix(in srgb, white, transparent 80%);
 
   color: white;
 }
 
-/* HOME */
-
 .home_button {
-  background:
-    linear-gradient(
-      to right,
-      rgb(251 191 36),
-      rgb(249 115 22)
-    );
+  background: linear-gradient(to right, rgb(251 191 36), rgb(249 115 22));
 
   color: black;
 
   font-weight: 600;
 
-  box-shadow:
-    0 0 30px
-    rgba(245, 158, 11, 0.25);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.25);
 }
 
 .home_button:hover {

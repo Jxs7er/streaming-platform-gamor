@@ -15,7 +15,6 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 app.use(express.json());
-
 app.use(cookieParser());
 
 app.use(
@@ -133,7 +132,7 @@ app.post(
     const { gameID, teamID } = req.params;
     const user = req.user;
     try {
-      const game = games.find((g) => g.id === Number(gameID));
+      const game = games.find((g) => g.id === gameID);
       const team = game.searches.find((t) => t.id === Number(teamID));
 
       team.players.push({

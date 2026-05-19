@@ -1,11 +1,12 @@
+import styles from "./Footer.module.css";
+
 const Footer = () => {
   return (
-    <div className=" self-end w-full bg-[linear-gradient(123deg,_#fff_70%,_#FAFAFA_30%)] 
-    text-gray-800/90 opacity-90  py-8">
+    <div className={styles.container}>
       {/* CONTENT */}
-      <div className="relative z-10 flex justify-around items-center text-xs gap-2">
+      <div>
         <div>
-          <h4 className="text-sm font-medium">Company</h4>
+          <h4>Company</h4>
           <ul>
             <li>About us</li>
             <li>Careers</li>
@@ -13,9 +14,8 @@ const Footer = () => {
             <li>Blog</li>
           </ul>
         </div>
-
         <div>
-          <h4 className="text-sm font-medium">Resources</h4>
+          <h4>Resources</h4>
           <ul>
             <li>Help Center</li>
             <li>Documentation</li>
@@ -23,9 +23,8 @@ const Footer = () => {
             <li>Community</li>
           </ul>
         </div>
-
         <div>
-          <h4 className="text-sm font-medium">Legal</h4>
+          <h4>Legal</h4>
           <ul>
             <li>Privacy Policy</li>
             <li>Terms of Service</li>
@@ -33,9 +32,8 @@ const Footer = () => {
             <li>Security</li>
           </ul>
         </div>
-
         <div>
-          <h4 className="text-sm font-medium">Social</h4>
+          <h4>Social</h4>
           <ul>
             <li>Twitter</li>
             <li>LinkedIn</li>
@@ -45,14 +43,20 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex justify-center w-full my-4 text-xs">
+      <div
+        style={{
+          justifyContent: "center",
+          width: "100%",
+          marginBlock: "2rem",
+          fontSize: "0.8rem",
+          lineHeight: "1.2rem",
+        }}
+      >
         <span>© 2026 Stream Platform. All rights reserved.</span>
       </div>
 
-      <div className="relative z-10 flex justify-center w-full font-medium mt-2">
-        <span>
-          Built by Jxs7er.
-        </span>
+      <div>
+        <span>Built by Jxs7er.</span>
       </div>
     </div>
   );

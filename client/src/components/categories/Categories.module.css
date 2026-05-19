@@ -1,5 +1,4 @@
 .container {
   padding-top: 1rem;
-
   background: linear-gradient(123deg, var(--bg-primary) 80%, var(--bg-secondary) 20%);
 }

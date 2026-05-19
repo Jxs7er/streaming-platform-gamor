@@ -5,10 +5,11 @@ import { useNavigate } from "react-router";
 import { SearchingGames } from "..";
 import { LoadingDots } from "../common/loadings";
 
-import styles from "./HeroBanner.module.css";
-import TitleHero from "./TitleHero";
-import PlayersCard from "./PlayersCard";
+import { useFetch } from "@/hooks/api/useFetch";
 import BackgroundBlurred from "./BackgroundBlurred";
+import styles from "./HeroBanner.module.css";
+import PlayersCard from "./PlayersCard";
+import TitleHero from "./TitleHero";
 
 const HeroBannerSection = () => {
   const [hover, setHover] = useState(false);
@@ -18,7 +19,7 @@ const HeroBannerSection = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [games, setGames] = useState([]);
 
   const [gameIndex, setGameIndex] = useState(0);
@@ -26,23 +27,28 @@ const HeroBannerSection = () => {
 
   const videoRef = useRef(null);
 
-  useEffect(() => {
-    const fetchGames = async () => {
-      setLoading(true);
+  const { loading, error, refetch } = useFetch({
+    handleFunction: () => GamesServices.get(),
+    setData: setGames,
+  });
 
-      try {
-        const res = await GamesServices.get();
-        if (!res.ok) return;
-        setGames(res.data);
-      } catch (error) {
-        setGames([]);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchGames = async () => {
+  //     setLoading(true);
 
-    fetchGames();
-  }, []);
+  //     try {
+  //       const res = await GamesServices.get();
+  //       if (!res.ok) return;
+  //       setGames(res.data);
+  //     } catch (error) {
+  //       setGames([]);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchGames();
+  // }, []);
 
   useEffect(() => {
     if (!games.length) return;
@@ -81,18 +87,21 @@ const HeroBannerSection = () => {
     setGameIndex((prev) => (prev - 1) % games.length);
   };
 
-  const handleSearchNow = () => {
-    if (!user) navigate("/auth/signin");
-    console.log("here");
-
-    // Definir el Auth Context
-    // Y agregarlo a la lista de busqueda
+  const handleSearchNow = async (payload) => {
+    if (!user) navigate("/auth/signin");    try {
+      const res = await GamesServices.matching(payload);
+      if (!res.ok) return;
+      setGames(res.data);
+    } catch (error) {}
   };
 
   const handleJoinTo = async (payload) => {
+    if (!user) navigate("/auth/signin");
+
     try {
       const res = await GamesServices.joinTo(payload);
       if (!res.ok) return;
+      setGames(res.data);
     } catch (error) {}
   };
 

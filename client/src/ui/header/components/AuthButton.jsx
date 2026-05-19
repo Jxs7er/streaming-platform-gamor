@@ -11,17 +11,8 @@ const AuthButton = () => {
     <>
       {!user ? (
         <>
-          <div
-            //   className="hidden md:flex gap-1
-            // items-center
-            // text-sm font-medium"
-            className={styles.container}
-          >
-            <Link
-              to={`/auth/signin`}
-              // className="px-4 py-2 ">
-              className={styles.link_sigin}
-            >
+          <div className={styles.container}>
+            <Link to={`/auth/signin`} className={styles.link_sigin}>
               <span
                 style={{
                   color: `var(--text-secondary)`,
@@ -30,14 +21,8 @@ const AuthButton = () => {
                 Sign In
               </span>
             </Link>
-            <Link
-              to={`/auth/signup`}
-              className={styles.link_sigup}
-              //       className="px-4 py-2 rounded-full
-              // bg-gradient-to-r bg-gray-100 border"
-            >
+            <Link to={`/auth/signup`} className={styles.link_sigup}>
               <span
-                //   className="text-gray-800/90"
                 style={{
                   color: `var(--text-secondary)`,
                 }}
@@ -47,20 +32,10 @@ const AuthButton = () => {
             </Link>
           </div>
 
-          <div
-            // className="md:hidden flex gap-1 items-center text-sm font-medium"
-            className={styles.container_mobile}
-          >
-            <Link
-              to={`/auth/signin`}
-              // className="px-4 py-2 rounded-none
-              // bg-gradient-to-r border flex justify-center
-              // items-center gap-1 text-xs"
-              className={styles.link}
-            >
+          <div className={styles.container_mobile}>
+            <Link to={`/auth/signin`} className={styles.link}>
               <FingerPrintIcon className="w-5 h-5" />
               <span>Sign In</span>
-              {/* <span className="text-gray-800/90">Create an account</span> */}
             </Link>
           </div>
         </>

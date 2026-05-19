@@ -19,10 +19,12 @@ const getPlayerStyle = (name) => {
   const index = letter.charCodeAt(0) % Object.keys(playerColors).length;
   const key = Object.keys(playerColors)[index];
 
-  return playerColors[key] ?? {
-    bg: "#374151",
-    text: "#f9fafb",
-  };
+  return (
+    playerColors[key] ?? {
+      bg: "#374151",
+      text: "#f9fafb",
+    }
+  );
 };
 
 const PlayerAvatar = ({ name }) => {
@@ -62,23 +64,16 @@ const TeamRow = ({ team, gameId, index, handleJoinTo }) => {
     <div className={styles.team_row}>
       {/* LEFT */}
       <div className={styles.team_left}>
-        <span className={styles.team_index}>
-          #{index + 1}
-        </span>
+        <span className={styles.team_index}>#{index + 1}</span>
 
-        <span className={styles.team_name}>
-          {teamName}
-        </span>
+        <span className={styles.team_name}>{teamName}</span>
       </div>
 
       {/* RIGHT */}
       <div className={styles.team_right}>
         <div className={styles.players_group}>
           {displayPlayers.map((p, i) => (
-            <PlayerAvatar
-              key={i}
-              name={p.name}
-            />
+            <PlayerAvatar key={i} name={p.name} />
           ))}
 
           {Array.from({ length: emptySlots }).map((_, i) => (
@@ -87,9 +82,7 @@ const TeamRow = ({ team, gameId, index, handleJoinTo }) => {
         </div>
 
         {isFull ? (
-          <span className={styles.full_label}>
-            FULL
-          </span>
+          <span className={styles.full_label}>FULL</span>
         ) : (
           <button
             aria-label={`Join to ${teamName}`}
@@ -109,13 +102,8 @@ const TeamRow = ({ team, gameId, index, handleJoinTo }) => {
   );
 };
 
-const SearchingGames = ({
-  currentGame,
-  handleSearchNow,
-  handleJoinTo,
-}) => {
-  const [activePlatform, setActivePlatform] =
-    useState("Party");
+const SearchingGames = ({ currentGame, handleSearchNow, handleJoinTo }) => {
+  const [activePlatform, setActivePlatform] = useState("Party");
 
   return (
     <div className={styles.container}>
@@ -124,9 +112,7 @@ const SearchingGames = ({
         <div className={styles.live_wrapper}>
           <div className={styles.live_dot} />
 
-          <span className={styles.live_label}>
-            Live Lobby
-          </span>
+          <span className={styles.live_label}>Live Lobby</span>
         </div>
 
         <span className={styles.online_label}>
@@ -141,14 +127,11 @@ const SearchingGames = ({
       {/* GAME TITLE */}
       <div className={styles.title_container}>
         <h2 className={styles.title}>
-          /{" "}
-          {currentGame?.name.toLowerCase() ??
-            "Select a Game"}
+          / {currentGame?.name.toLowerCase() ?? "Select a Game"}
         </h2>
 
         <span className={styles.subtitle}>
-          {currentGame.mood} · Season{" "}
-          {currentGame.season}
+          {currentGame.mood} · Season {currentGame.season}
         </span>
       </div>
 
@@ -168,22 +151,15 @@ const SearchingGames = ({
 
       {/* SECTION */}
       <div className={styles.section_header}>
-        <span className={styles.section_label}>
-          Open squads
-        </span>
+        <span className={styles.section_label}>Open squads</span>
 
-        <button className={styles.filter_button}>
-          ⚙ Filters
-        </button>
+        <button className={styles.filter_button}>⚙ Filters</button>
       </div>
 
       {/* TEAM LIST */}
       <div className={styles.team_list}>
         {currentGame?.searches
-          ?.filter(
-            ({ type }) =>
-              type === activePlatform.toLowerCase()
-          )
+          ?.filter(({ type }) => type === activePlatform.toLowerCase())
           .map((team, index) => (
             <TeamRow
               key={team.id}
@@ -204,15 +180,18 @@ const SearchingGames = ({
 
           <button
             className={styles.search_button}
-            onClick={handleSearchNow}
+            onClick={() =>
+              handleSearchNow({
+                gameID: currentGame.id,
+              })
+            }
           >
             ⚡ SEARCH NOW →
           </button>
         </div>
 
         <p className={styles.cta_tip}>
-          Auto-matches you with the next
-          available squad
+          Auto-matches you with the next available squad
         </p>
       </div>
     </div>
