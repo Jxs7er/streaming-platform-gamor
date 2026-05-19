@@ -1,138 +1,79 @@
+import styles from "./TrendsCategories.module.css";
+
 const TrendsCategories = ({ trends, ref, show }) => {
   return (
-    <div className="flex flex-col gap-y-4">
-      <div className="px-12 flex items-center justify-between">
-        <h4
-          className="
-        text-sm tracking-[0.25em]
-        uppercase
-        text-gray-900/70
-        font-semibold
-      "
-        >
-          Trending Categories
-        </h4>
-
-        {/* <span className="text-xs text-gray-500">Updated Live</span> */}
+    <div className={styles.container}>
+      <div className={styles.header_container}>
+        <h4>Trending Categories</h4>
       </div>
 
-      <div className="px-10">
-        <div
-          ref={ref}
-          className="
-        flex gap-4
-        overflow-x-auto
-        scrollbar-hide
-        pb-2
-      "
-        >
+      <div className={styles.footer_container}>
+        <div ref={ref} className={styles.trends_container}>
           {trends.map((c, index) => {
             const featured = index === 0;
 
             return (
-              <div
-                key={c.name}
-                className={`
-                relative
-                min-w-[220px]
-                max-w-[220px]
-                h-[140px]
-                rounded-2xl
-                overflow-hidden
-                border
-                backdrop-blur-2xl
-                transition-all duration-500
-                hover:-translate-y-2
-                hover:scale-[1.02]
-                flex flex-col justify-between
-                p-4
-                ${
-                  featured
-                    ? `
-                        bg-gradient-to-br 
-                        from-fuchsia-500 
-                        to-purple-700
-                        border-fuchsia-400/40
-                        shadow-[0_0_40px_rgba(217,70,239,0.35)]
-                    `
-                    : `
-                        bg-white/70
-                        border-white/40
-                        hover:bg-white/90
-                    `
-                }
-            `}
-              >
-                {featured && (
-                  <div
-                    className="
-                  absolute inset-0
-                  bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.25),transparent_40%)]
-                "
-                  />
-                )}
+              <div key={c.name} featured={`${featured}`}>
+                {featured && <div className={styles.radial_add} />}
 
-                <div className="relative z-10 flex items-start justify-between">
+                <div className={styles.card_container}>
                   <div>
-                    <h5
-                      className={`
-                    text-sm font-bold uppercase tracking-wide
-                    ${featured ? "text-white" : "text-gray-900"}
-                  `}
-                    >
+                    <h5 className={styles.title} featured={`${featured}`}>
                       {c.name}
                     </h5>
 
-                    <span
-                      className={`
-                    text-xs
-                    ${featured ? "text-white/70" : "text-gray-500"}
-                  `}
-                    >
+                    <span className={styles.type_text} featured={`${featured}`}>
                       {c.type}
                     </span>
                   </div>
 
-                  {featured && (
-                    <div
-                      className="
-                    w-8 h-8
-                    rounded-full
-                    bg-white/20
-                    backdrop-blur-xl
-
-                    flex items-center justify-center
-
-                    text-lg
-                  "
-                    >
-                      🔥
-                    </div>
-                  )}
+                  {featured && <div className={styles.fire_badge}>🔥</div>}
                 </div>
 
-                <div className="relative z-10 flex items-end justify-between">
-                  <div className="flex flex-col">
+                <div
+                  // className="relative z-10 flex items-end justify-between"
+                  className={styles.stats_container}
+                >
+                  <div className={styles.popularity_container}>
+                    {/* <div className="flex flex-col"> */}
                     <span
+                      className={styles.popularity_label}
+                      featured={`${featured}`}
+                    >
+                      Popularity
+                    </span>
+                    {/* <span
                       className={`
                     text-xs
                     ${featured ? "text-white/60" : "text-gray-500"}
                   `}
                     >
                       Popularity
-                    </span>
+                    </span> */}
 
                     <span
+                      className={styles.popularity_value}
+                      featured={`${featured}`}
+                    >
+                      {c.popularity}
+                    </span>
+                    {/* <span
                       className={`
                     text-2xl font-black
                     ${featured ? "text-white" : "text-gray-900"}
                   `}
                     >
                       {c.popularity}
-                    </span>
+                    </span> */}
                   </div>
 
                   <button
+                    className={styles.explore_button}
+                    featured={`${featured}`}
+                  >
+                    Explore
+                  </button>
+                  {/* <button
                     className={`
                   px-3 py-1 rounded-full
                   text-xs font-medium
@@ -154,7 +95,7 @@ const TrendsCategories = ({ trends, ref, show }) => {
                 `}
                   >
                     Explore
-                  </button>
+                  </button> */}
                 </div>
               </div>
             );

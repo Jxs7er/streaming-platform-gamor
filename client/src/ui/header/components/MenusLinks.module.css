@@ -1,0 +1,22 @@
+.link {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.link:hover {
+  color: var(--text-primary);
+}
+
+.links {
+  display: none;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .links {
+    display: flex;
+  }
+}

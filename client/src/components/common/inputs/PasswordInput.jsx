@@ -1,4 +1,6 @@
-import { CheckCircleIcon } from "@heroicons/react/24/solid";
+
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import styles from "./PasswordInput.module.css";
 
 const PasswordInput = ({
   label,
@@ -14,11 +16,16 @@ const PasswordInput = ({
 }) => {
   const errors = confirmError
     ? passwordErrors
-    : passwordErrors && Array.isArray(passwordErrors) && passwordErrors.length > 0;
+    : passwordErrors &&
+      Array.isArray(passwordErrors) &&
+      passwordErrors.length > 0;
 
   return (
-    <div>
-      <label className="text-sm text-gray-600">{label}</label>
+    <div className={styles.container}>
+      <label className={styles.label}>
+        {label}
+      </label>
+
       <input
         name={name}
         value={value}
@@ -28,27 +35,46 @@ const PasswordInput = ({
         className={
           _class
             ? _class
-            : `w-full mt-1 px-3 py-2 border-b focus:outline-none focus:ring-2
-        ${
-          errors
-            ? "border-red-400 focus:ring-red-400"
-            : "border-gray-300 focus:ring-indigo-500"
-        }`
+            : `
+              ${styles.input}
+              ${
+                errors
+                  ? styles.input_error
+                  : styles.input_normal
+              }
+            `
         }
       />
 
-      {!isLogin && errors && !confirmError ? (
-        <ul className="mt-2 text-xs text-red-500 space-y-1">
+      {!isLogin &&
+      errors &&
+      !confirmError ? (
+        <ul className={styles.error_list}>
           {passwordErrors.map((err, idx) => (
-            <li key={idx}>• {err}</li>
+            <li
+              key={idx}
+              className={styles.error_item}
+            >
+              • {err}
+            </li>
           ))}
         </ul>
-      ) : !isLogin && value && !confirmError ? (
-        <p className="mt-2 text-xs text-green-600 flex justify-start items-center">
-          <CheckCircleIcon className="w-4 h-4" /> <span>Perfect</span>
+      ) : !isLogin &&
+        value &&
+        !confirmError ? (
+        <p className={styles.success_message}>
+          <CheckCircleIcon
+            className={styles.success_icon}
+          />
+
+          <span className={styles.success_text}>
+            Perfect
+          </span>
         </p>
       ) : confirmError && !isLogin ? (
-        <p className="text-xs text-red-500 mt-1">{confirmError}</p>
+        <p className={styles.confirm_error}>
+          {confirmError}
+        </p>
       ) : null}
     </div>
   );

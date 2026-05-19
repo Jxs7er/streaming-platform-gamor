@@ -1,0 +1,412 @@
+.page {
+  width: 100%;
+}
+
+.page_wrapper {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+
+  background-color: rgb(249 250 251);
+}
+
+.auth_container {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 66.666667%;
+
+  border-radius: 9999px;
+}
+
+/* =========================
+   LEFT HERO PANEL
+========================= */
+
+.hero_panel {
+  position: relative;
+
+  display: none;
+
+  width: 50%;
+  height: 100%;
+
+  padding: 2.5rem;
+
+  flex-direction: column;
+  justify-content: space-around;
+
+  color: white;
+
+  border-radius: 0.375rem;
+
+  background: linear-gradient(
+    to bottom right,
+    rgb(79 70 229),
+    rgb(107 33 168)
+  );
+}
+
+.hero_cards_container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+/* =========================
+   FLOATING CARDS
+========================= */
+
+.floating_card {
+  position: absolute;
+
+  width: 75%;
+
+  padding: 1rem;
+
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  border-radius: 0.75rem;
+
+  backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  transition-property: all;
+
+  transition-duration: 300ms;
+
+  transition-timing-function:
+    cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating_card:hover {
+  transform: scale(1.02);
+}
+
+/* =========================
+   CARD VARIANTS
+========================= */
+
+.card_elden {
+  margin-top: 1rem;
+
+  background-color:
+    color-mix(in srgb, white, transparent 95%);
+
+  border:
+    1px solid
+    color-mix(in srgb, white, transparent 90%);
+}
+
+.card_tournament {
+  position: absolute;
+
+  right: 0.5rem;
+  top: -3rem;
+
+  background-color:
+    color-mix(in srgb, rgb(245 158 11), transparent 55%);
+
+  border:
+    1px solid
+    color-mix(in srgb, rgb(252 211 77), transparent 90%);
+}
+
+.card_party {
+  position: absolute;
+
+  left: 0.5rem;
+  top: -9rem;
+
+  transform: rotate(-2deg);
+
+  background-color:
+    color-mix(in srgb, rgb(147 51 234), transparent 20%);
+
+  border:
+    1px solid
+    color-mix(in srgb, rgb(216 180 254), transparent 90%);
+}
+
+/* =========================
+   ICONS
+========================= */
+
+.icon_container {
+  width: 3.5rem;
+  height: 3.5rem;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.5rem;
+}
+
+.icon_white {
+  background-color:
+    color-mix(in srgb, white, transparent 80%);
+}
+
+.icon_yellow {
+  background-color:
+    color-mix(in srgb, rgb(254 249 195), transparent 80%);
+}
+
+.icon_purple {
+  background-color:
+    color-mix(in srgb, rgb(243 232 255), transparent 80%);
+}
+
+/* =========================
+   STREAM INFO
+========================= */
+
+.stream_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.live_badge {
+  font-size: 0.75rem;
+  line-height: 1rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.025em;
+}
+
+.live_red {
+  color: rgb(248 113 113);
+}
+
+.live_amber {
+  color: rgb(254 243 199);
+}
+
+.live_green {
+  color: rgb(134 239 172);
+}
+
+.stream_title {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  font-weight: 600;
+
+  color: white;
+}
+
+.viewers_text {
+  font-size: 0.75rem;
+  line-height: 1rem;
+
+  color: rgb(255 255 255 / 0.6);
+}
+
+/* =========================
+   MESSAGE SLIDER
+========================= */
+
+.message_slider {
+  position: absolute;
+
+  top: 8rem;
+  right: -2.5rem;
+
+  width: 14rem;
+  height: 1.25rem;
+
+  overflow: hidden;
+
+  display: flex;
+
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 1rem;
+
+  border-radius: 0.75rem;
+
+  background-color:
+    color-mix(in srgb, black, transparent 75%);
+
+  border:
+    1px solid
+    color-mix(in srgb, black, transparent 95%);
+
+  backdrop-filter: blur(24px);
+}
+
+.message_text {
+  font-size: 0.75rem;
+  line-height: 1rem;
+
+  letter-spacing: 0.025em;
+
+  color: rgb(255 255 255 / 0.7);
+
+  transition-property:
+    transform,
+    opacity;
+
+  transition-duration: 500ms;
+
+  transition-timing-function:
+    cubic-bezier(0.4, 0, 0.2, 1);
+
+  will-change:
+    transform,
+    opacity;
+}
+
+.message_text_transitioning {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.message_text_idle {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero_content {
+  width: 100%;
+}
+
+.hero_title {
+  margin-block: 1rem;
+
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+
+  font-weight: 700;
+
+  text-transform: lowercase;
+}
+
+.hero_description {
+  max-width: 28rem;
+
+  color: white;
+
+  animation:
+    pulse 2s
+    cubic-bezier(0.4, 0, 0.6, 1)
+    infinite;
+
+  filter:
+    drop-shadow(
+      0 0 10px rgba(255,255,255,.9)
+    );
+}
+
+/* =========================
+   RIGHT FORM
+========================= */
+
+.form_section {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.form_card {
+  width: 100%;
+
+  padding: 1.5rem;
+
+  border-radius: 0.375rem;
+
+  background-color: transparent;
+
+  border:
+    1px solid rgb(229 231 235);
+
+  backdrop-filter: blur(40px);
+
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* =========================
+   FORM HEADER
+========================= */
+
+.form_header {
+  margin-bottom: 1.5rem;
+
+  padding-bottom: 0.75rem;
+
+  border-bottom:
+    1px solid rgb(229 231 235);
+}
+
+.form_title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+
+  font-weight: 600;
+
+  text-transform: lowercase;
+
+  color: rgb(31 41 55 / 0.8);
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.error_message {
+  margin-bottom: 0.75rem;
+
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  color: rgb(239 68 68);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.25rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (min-width: 768px) {
+  .hero_panel {
+    display: flex;
+  }
+
+  .form_section {
+    width: 50%;
+  }
+}

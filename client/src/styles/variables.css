@@ -16,6 +16,15 @@
   --color-gray-900: #111827;
   --color-gray-950: #030712;
 
+  /* Amber */
+  --color-amber-400: #fbbf24;
+  --color-amber-600: #d97706;
+
+  /* Fuchsia */
+  --color-fuchsia-500: #d946ef;
+  /* Purple */
+  --color-purple-700: #7e22ce;
+
   --space-1: 4px;
   --space-2: calc(var(--space-1) * 2);
   --space-4: calc(var(--space-1) * 4);
@@ -27,4 +36,9 @@
   --radius-full: 9999px;
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* Solo informativo */
+  --sm: 640px;
+  --md: 768px;
+  --lg: 1024px;
 }

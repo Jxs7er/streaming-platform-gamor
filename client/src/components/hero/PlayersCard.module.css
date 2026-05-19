@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: absolute;
+  gap: 1rem;
+  bottom: 1.5rem;
+  inset: 0;
+  z-index: 20;
+}
+
+.card_container {
+  position: relative;
+  height: 10rem;
+  width: 8rem;
+  overflow: hidden;
+  opacity: 0.9;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--bg-primary), transparent 90%);
+  background-color: color-mix(in srgb, white, transparent 95%);
+  backdrop-filter: blur(40px);
+
+  box-shadow: 0 25px 80px rgba(168,85,247,0.35);
+
+  transition-property: all;
+  transition-duration: 700ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.card_container:hover {
+  scale: 1.05;
+  transform: translateY(-2.5rem);
+}
+
+.card_container[index="0"] {
+  transform: rotate(8deg) translateY(-1rem);
+}
+.card_container[index="1"] {
+  rotate: 0;
+  transform: scale(1.1) translateY(-2rem);
+}
+.card_container[index="2"] {
+  rotate: -8deg;
+  transform: translateY(-1rem);
+}
+
+.glow_card {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, black, transparent 40%),
+    transparent,
+    color-mix(in srgb, white, transparent 90%)
+  );
+  z-index: 10;
+  box-shadow: 0px 25px 80px rgba(168, 85, 247, 0.35);
+}
+
+.image_card {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: start;
+
+  transition-property: transform;
+  transition-duration: 700ms;
+}
+
+.image_card:hover {
+  scale: 1.1;
+}
+
+.reflection_card {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, white, transparent 80%),
+    transparent,
+    transparent
+  );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .container {
+    gap: 2rem;
+  }
+  .card_container {
+    height: 15rem;
+    width: 11rem;
+  }
+}

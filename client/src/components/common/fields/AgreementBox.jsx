@@ -1,45 +1,51 @@
-const AgreementBox = ({ agreement, _class }) => {
+import styles from "./AgreementBox.module.css";
+
+const AgreementBox = ({
+  agreement,
+  _class,
+}) => {
   return (
     <div
       className={
         _class
           ? _class
-          : `px-2 py-3 mt-3 flex flex-col items-center rounded-md
-        ${
-          agreement
-            ? "bg-green-500/20"
-            : "border border-amber-300/50 bg-amber-100/50"
-        }`
+          : `
+            ${styles.container}
+            ${
+              agreement
+                ? styles.container_active
+                : styles.container_inactive
+            }
+          `
       }
     >
-      <div className="flex items-center gap-2">
+      <div className={styles.content}>
         <input
           type="checkbox"
           checked={agreement}
-          //   readOnly
-          className="cursor-pointer"
+          className={styles.checkbox}
         />
 
-        <span className="text-xs font-semibold text-gray-800/80">
+        <span className={styles.label}>
           I agree with
         </span>
 
         <span
-          //   onClick={() => setOpenAgreements(true)}
-          className={`cursor-pointer font-semibold px-3 py-1 rounded-full text-[.7rem]
-                  text-white animate-pulse transition-all
-          ${
-            !agreement
-              ? "bg-gradient-to-l from-indigo-500 to-purple-400"
-              : "bg-gradient-to-l from-green-500 to-green-400"
-          }`}
+          className={`
+            ${styles.button}
+            ${
+              !agreement
+                ? styles.button_inactive
+                : styles.button_active
+            }
+          `}
         >
           Terms and Conditions
         </span>
       </div>
 
       {!agreement && (
-        <span className="text-xs text-red-500 font-semibold mt-2">
+        <span className={styles.error}>
           You must accept this agreements
         </span>
       )}

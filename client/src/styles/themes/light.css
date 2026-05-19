@@ -4,6 +4,7 @@
 
   --bg-primary: var(--color-gray-50);
   --bg-secondary: var(--color-gray-100);
+  --bg-secondary2: var(--color-gray-200);
 
   --card-bg: rgba(255, 255, 255, 0.7);
   --card-border: rgba(0, 0, 0, 0.08);

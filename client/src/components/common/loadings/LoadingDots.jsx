@@ -1,15 +1,41 @@
-const LoadingDots = ({ loading, color = "bg-cyan-500", tip = null }) => (
-  <div className="flex flex-col justify-center items-center gap-y-1">
-    <div className="flex gap-1 mt-0">
+import styles from "./LoadingDots.module.css";
+
+const LoadingDots = ({
+  loading,
+  color = "cyan",
+  tip = null,
+}) => (
+  <div className={styles.container}>
+    <div className={styles.dots_container}>
       <span
-        className={`w-2 h-2 ${color} rounded-full animate-bounce [animation-delay:-0.3s]`}
+        className={`
+          ${styles.dot}
+          ${styles.delay_1}
+          ${styles[color]}
+        `}
       />
+
       <span
-        className={`w-2 h-2 ${color} rounded-full animate-bounce [animation-delay:-0.15s]`}
+        className={`
+          ${styles.dot}
+          ${styles.delay_2}
+          ${styles[color]}
+        `}
       />
-      <span className={`w-2 h-2 ${color} rounded-full animate-bounce`} />
+
+      <span
+        className={`
+          ${styles.dot}
+          ${styles[color]}
+        `}
+      />
     </div>
-    {tip && <span className="text-xs font-semibold text-gray-500">{tip}</span>}
+
+    {tip && (
+      <span className={styles.tip}>
+        {tip}
+      </span>
+    )}
   </div>
 );
 

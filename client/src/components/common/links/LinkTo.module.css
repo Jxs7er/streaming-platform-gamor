@@ -1,0 +1,99 @@
+.container {
+  /* flex */
+  display: flex;
+
+  /* justify-center */
+  justify-content: center;
+
+  /* items-center */
+  align-items: center;
+
+  /* mt-3 */
+  margin-top: 0.75rem;
+
+  /* text-sm */
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  /* text-gray-800 */
+  color: rgb(31 41 55);
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+  /* text-xs */
+  font-size: 0.75rem;
+  line-height: 1rem;
+
+  /* font-medium */
+  font-weight: 500;
+
+  /* text-gray-900/50 */
+  color:
+    color-mix(in srgb, rgb(17 24 39), transparent 50%);
+}
+
+/* =========================
+   LINK BUTTON
+========================= */
+
+.link {
+  /* ml-2 */
+  margin-left: 0.5rem;
+
+  /* px-4 */
+  padding-inline: 1rem;
+
+  /* py-1 */
+  padding-block: 0.25rem;
+
+  /* text-white */
+  color: white;
+
+  /* text-sm */
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  /* rounded-full */
+  border-radius: 9999px;
+
+  text-decoration: none;
+
+  background:
+    linear-gradient(
+      to left,
+      rgb(99 102 241),
+      rgb(216 180 254)
+    );
+
+  animation:
+    pulse 2s
+    cubic-bezier(0.4, 0, 0.6, 1)
+    infinite;
+
+  box-shadow:
+    0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+  transition-property:
+    background,
+    transform,
+    opacity,
+    box-shadow;
+
+  transition-duration: 300ms;
+
+  transition-timing-function:
+    cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link:hover {
+  background:
+    linear-gradient(
+      to left,
+      black,
+      rgb(17 24 39)
+    );
+}

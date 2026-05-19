@@ -5,6 +5,8 @@ import { LoadingDots } from "../common/loadings";
 import GroupedCategories from "./GroupedCategories";
 import TrendsCategories from "./TrendsCategories";
 
+import styles from "./Categories.module.css";
+
 const CategoriesSection = () => {
   const ref = useRef(null);
   const [show, setShow] = useState();
@@ -69,10 +71,17 @@ const CategoriesSection = () => {
     );
 
   return (
-    <div className="bg-[linear-gradient(123deg,_#FAFAFA_80%,_#Fff_20%)] pt-4">
+    <div
+      className={styles.container}
+      // className="bg-[linear-gradient(123deg,_#FAFAFA_80%,_#Fff_20%)] pt-4"
+    >
       <TrendsCategories trends={trends} ref={ref} />
 
-      <hr className="my-6" />
+      <hr
+        style={{
+          marginBlock: "1.5rem",
+        }}
+      />
 
       <GroupedCategories groupByType={groupByType} ref={ref} />
     </div>

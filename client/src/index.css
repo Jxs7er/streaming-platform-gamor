@@ -1,9 +1,12 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 
-/* @import "./styles/global.css";
+@import "./styles/global.css";
 @import "./styles/variables.css";
 @import "./styles/utilities.css";
- */
+
 /* Themes */
-/* @import "./styles/themes/light.css";
-@import "./styles/themes/dark.css"; */
+@import "./styles/themes/light.css";
+@import "./styles/themes/dark.css";
+
+/* Animations */
+@import "./styles/animations/animations.css";

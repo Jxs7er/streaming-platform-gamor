@@ -1,3 +1,4 @@
+import styles from "./TextInput.module.css";
 const TextInput = ({
   label,
   name,
@@ -9,8 +10,9 @@ const TextInput = ({
   _class,
 }) => {
   return (
-    <div>
-      <label className="text-sm text-gray-600">{label}</label>
+    <div className={styles.container}>
+      <label className={styles.label}>{label}</label>
+
       <input
         name={name}
         value={value}
@@ -20,16 +22,14 @@ const TextInput = ({
         className={
           _class
             ? _class
-            : `w-full mt-1 px-3 py-2 border-b focus:outline-none focus:ring-2
-        ${
-          error
-            ? "border-red-400 focus:ring-red-400"
-            : "border-gray-300 focus:ring-indigo-500"
-        }`
+            : `
+              ${styles.input}
+              ${error ? styles.input_error : styles.input_normal}
+            `
         }
       />
 
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
+      {error && <p className={styles.error_message}>{error}</p>}
     </div>
   );
 };

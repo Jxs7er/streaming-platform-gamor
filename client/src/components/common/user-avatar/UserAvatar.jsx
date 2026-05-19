@@ -1,6 +1,8 @@
-import { useLogin } from "@/hooks";
 import { assignColorsByLetter } from "@/utils";
+
 import { useState } from "react";
+
+import styles from "./UserAvatar.module.css";
 
 const COLOR_MAP = {
   a: "blue",
@@ -14,59 +16,87 @@ const COLOR_MAP = {
   default: "gray",
 };
 
-const UserAvatar = ({ user, logout }) => {
-  const [open, setOpen] = useState(false);
+const UserAvatar = ({
+  user,
+  logout,
+}) => {
+  const [open, setOpen] =
+    useState(false);
 
   if (!user) return null;
 
   const { name, last_name } = user;
 
-  const colorKey = assignColorsByLetter(name);
-  const color = COLOR_MAP[colorKey] || COLOR_MAP.default;
+  const colorKey =
+    assignColorsByLetter(name);
 
-  const handleLogout = async () => await logout();
+  const color =
+    COLOR_MAP[colorKey] ||
+    COLOR_MAP.default;
+
+  const handleLogout = async () =>
+    await logout();
 
   return (
-    <div className="relative inline-block">
-      {/* Avatar */}
+    <div className={styles.container}>
+      {/* AVATAR */}
       <button
-        onClick={() => setOpen((prev) => !prev)}
-        className={`w-10 h-10 rounded-full flex justify-center items-center 
-        text-sm font-semibold bg-white/10 backdrop-blur-3xl
-        bg-${color}-200`}
+        onClick={() =>
+          setOpen((prev) => !prev)
+        }
+        className={`
+          ${styles.avatar_button}
+          ${
+            styles[
+              `avatar_${color}`
+            ]
+          }
+        `}
       >
-        <span className={`text-${color}-800`}>{name.charAt(0)}</span>
+        <span
+          className={
+            styles[`text_${color}`]
+          }
+        >
+          {name.charAt(0)}
+        </span>
       </button>
 
-      {/* Dropdown */}
+      {/* DROPDOWN */}
       {open && (
-        <div
-          className="absolute top-12 left-0 w-44 
-    bg-black/40 backdrop-blur-2xl 
-    border border-white/10
-    rounded-xl p-3 shadow-[0_10px_40px_rgba(0,0,0,0.5)]
-    animate-in fade-in zoom-in-95 duration-200"
-        >
-          {/* User info */}
-          <div className="flex flex-col">
-            <span className="text-xs text-white font-semibold tracking-wide">
+        <div className={styles.dropdown}>
+          {/* USER INFO */}
+          <div
+            className={styles.user_info}
+          >
+            <span
+              className={
+                styles.user_name
+              }
+            >
               {name} {last_name}
             </span>
-            <span className="text-[10px] text-white/40">Online Player</span>
+
+            <span
+              className={
+                styles.user_status
+              }
+            >
+              Online Player
+            </span>
           </div>
 
-          {/* Divider */}
-          <div className="my-3 h-px bg-white/10" />
+          {/* DIVIDER */}
+          <div
+            className={styles.divider}
+          />
 
-          {/* Actions */}
+          {/* ACTIONS */}
           <button
             onClick={handleLogout}
-            className="w-full text-xs font-medium text-red-300 
-      bg-red-500/10 border border-red-500/20
-      rounded-lg px-2 py-1.5
-      hover:bg-red-500/20 hover:text-red-200
-      transition-all duration-200
-      active:scale-[0.98]"
+            className={
+              styles.logout_button
+            }
           >
             Log Out
           </button>

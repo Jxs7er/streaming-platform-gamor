@@ -8,8 +8,6 @@ const HomePage = () => {
         <HeroBannerSection />
       </div>
       <PromotionSection />
-      {/* <hr />
-      <hr /> */}
       <CategoriesSection />
     </div>
   );

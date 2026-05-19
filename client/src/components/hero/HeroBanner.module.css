@@ -1,0 +1,57 @@
+.container,
+.hero_container {
+  display: flex;
+  width: 100%;
+}
+
+.video,
+.trailer_container {
+  width: 100%;
+}
+
+.container {
+  /* display: flex; */
+  flex-direction: column;
+  column-gap: 0.25rem;
+  /* align-items: center; */
+  align-items: center;
+}
+
+.hero_container {
+  position: relative;
+  overflow: hidden;
+  padding-block: 6rem;
+  height: 400px;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.trailer_container {
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  filter: blur(0.2rem);
+  height: 100%;
+  scale: 105%;
+}
+
+.video_overlay {
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, black, transparent 80%);
+}
+
+@media (min-width: 768px) {
+  .container {
+    column-gap: 0rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

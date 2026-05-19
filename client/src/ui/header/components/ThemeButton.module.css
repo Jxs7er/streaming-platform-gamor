@@ -1,0 +1,42 @@
+.container {
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  padding: 2px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, black, transparent 80%),
+    color-mix(in srgb, var(--color-amber-400), transparent 80%)
+  );
+}
+
+.ico {
+  border-radius: 1rem;
+  padding: 0.25rem;
+  color: white;
+}
+
+.dark_mode {
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, black, transparent 40%),
+    color-mix(in srgb, black, transparent 90%)
+  );
+}
+
+.light_mode {
+  background: linear-gradient(
+    to left,
+    color-mix(in srgb, var(--color-amber-400), transparent 40%),
+    color-mix(in srgb, var(--color-amber-600), transparent 90%)
+  );
+}

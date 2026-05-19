@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  z-index: 40;
+  width: 100%;
+  background-color: color-mix(in srgb, black, transparent 50%);
+  backdrop-filter: blur(3rem);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  padding-inline: 1.5rem;
+  margin: 0;
+  padding-block: 0.25rem;
+}
+
+.title {
+  letter-spacing: 0.1rem;
+  font-size: 1.25rem;
+  
+  text-transform: lowercase;
+  color: color-mix(in srgb, black, transparent 30%);
+  font-weight: 600;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+
+  transition-property: all;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .container {
+    background-color: color-mix(in srgb, white, transparent 5%);
+    border-block: 1px solid var(--card-border);
+  }
+}

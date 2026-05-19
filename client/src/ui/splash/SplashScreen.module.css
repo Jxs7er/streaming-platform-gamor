@@ -1,0 +1,41 @@
+.container,
+.sub_container {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  justify-content: center;
+  height: 100dvh;
+}
+
+.sub_container {
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sub_container > div {
+  align-self: center;
+  position: relative;
+}
+
+.logo_text {
+  font-weight: 600;
+  color: color-mix(in srgb, var(--color-gray-800), transparent 20%);
+  font-size: 2.25rem;
+  letter-spacing: .2rem;
+  /* animate-pulse/ */
+}
+
+.logo_add {
+  position: absolute;
+  height: 1.25rem;
+  width: 1.25rem;
+  top: .5rem;
+  left: .5rem;
+  border-radius: 1rem;
+  background-color: color-mix(in srgb, white, transparent 70%);
+  margin-left: -1rem;
+  backdrop-filter: blur(0.1rem);
+  /* animate-ping */
+}

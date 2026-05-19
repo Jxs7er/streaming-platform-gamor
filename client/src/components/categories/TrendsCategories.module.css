@@ -1,0 +1,224 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.header_container {
+  padding-inline: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_container > h4 {
+  font-size: 0.87rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text-primary), transparent 30%);
+  font-weight: 600;
+}
+
+.footer_container {
+  padding-inline: 2.5rem;
+}
+
+.trends_container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  /* scrobar */
+  padding-bottom: 0.5rem;
+}
+
+.trends_container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  min-width: 220px;
+  max-width: 220px;
+  height: 140px;
+  border-radius: 1rem;
+  overflow: hidden;
+  backdrop-filter: blur(1rem);
+
+  padding: 1rem;
+
+  transition-property: all;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  background-color: color-mix(in srgb, white, transparent 30%);
+  border: 1px solid color-mix(in srgb, var(--card-border), transparent 60%);
+}
+
+.trends_container > div:hover {
+  border: 1px solid color-mix(in srgb, var(--card-border), transparent 10%);
+  transform: scale(1.02) translateY(-0.5rem);
+}
+
+.trends_container > div[featured="true"] {
+  background: linear-gradient(
+    to bottom right,
+    var(--color-fuchsia-500),
+    var(--color-purple-700)
+  );
+  border-color: color-mix(in srgb, var(--color-fuchsia-500), transparent 60%);
+  box-shadow: 0px 0px 40px rgba(217, 70, 239, 0.35);
+}
+
+.radial_add {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    color-mix(in srgb, var(--bg-primary), transparent 75%)
+      /* rgba(255, 255, 255, 0.25), */ transparent 40%
+  );
+}
+
+.card_container {
+  display: flex;
+  position: relative;
+  z-index: 10;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  color: var(--text-primary);
+}
+
+.title[featured="true"] {
+  color: white;
+}
+
+.fire_badge {
+  width: 2rem;
+  height: 2rem;
+
+  border-radius: 9999px;
+
+  background-color: color-mix(in srgb, white, transparent 80%);
+
+  backdrop-filter: blur(24px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.type_text {
+  font-size: 0.75rem;
+  line-height: 1rem;
+
+  color: var(--text-primary);
+}
+
+.type_text[featured="true"] {
+  color: rgb(255 255 255 / 0.7);
+}
+
+.stats_container {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.popularity_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.popularity_label {
+  font-size: 0.75rem;
+  line-height: 1rem;
+
+  color: rgb(107 114 128);
+}
+
+.popularity_label[featured="true"] {
+  color: rgb(255 255 255 / 0.6);
+}
+
+.popularity_value {
+  font-size: 1.5rem;
+  line-height: 2rem;
+
+  font-weight: 900;
+
+  color: rgb(17 24 39);
+}
+
+.popularity_value[featured="true"] {
+  color: white;
+}
+
+.explore_button {
+  cursor: pointer;
+  padding-inline: 0.75rem;
+  padding-block: 0.25rem;
+
+  border-radius: 9999px;
+
+  font-size: 0.75rem;
+  line-height: 1rem;
+  border: none;
+  background-color: transparent;
+
+  font-weight: 500;
+
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    backdrop-filter;
+
+  transition-duration: 150ms;
+
+  transition-timing-function:
+    cubic-bezier(0.4,0,0.2,1);
+
+  background-color:
+    color-mix(in srgb, black, transparent 95%);
+
+  color: rgb(55 65 81);
+}
+
+.explore_button:hover {
+  background-color:
+    color-mix(in srgb, black, transparent 90%);
+}
+
+.explore_button[featured="true"] {
+  background-color:
+    color-mix(in srgb, white, transparent 80%);
+
+  color: white;
+}
+
+.explore_button[featured="true"]:hover {
+  background-color:
+    color-mix(in srgb, white, transparent 70%);
+}

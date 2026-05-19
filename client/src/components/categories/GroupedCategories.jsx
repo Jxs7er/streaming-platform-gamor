@@ -1,50 +1,21 @@
-const GroupedCategories = ({groupByType, ref }) => {
+import styles from "./GroupedCategories.module.css";
+
+const GroupedCategories = ({ groupByType, ref }) => {
   return (
-    <div className="px-16 flex flex-col gap-y-2 w-full bg-gray-100 mb-4 py-2">
+    <div className={styles.container}>
       {Object.entries(groupByType).map((t) => {
         return (
-          <div className="flex flex-col gap-y-1 border-y">
-            <div className=" px-0 bg-transparent py-2">
-              <h4 className="text-sm tracking-wide text-gray-950/80 text-xs  uppercase font-semibold">
-                {t[0]} /
-              </h4>
+          <div className={styles.group_container}>
+            <div className={styles.header_container}>
+              <h4 className={styles.header_title}>{t[0]} /</h4>
             </div>
-            <div
-              ref={ref}
-              className="flex gap-4 flex-wrap pb-2 scrollbar-hide px-4"
-            >
+            <div ref={ref} className={styles.categories_container}>
               {t[1].map((c) => {
                 return (
-                  <div
-                    // ref={(el) => (itemRefs.current[i] = el)}
-                    key={c.name}
-                    className={`
-                    relative
-                min-w-[160px]
-                bg-white/80
-                border border-gray-200/80
-                rounded-xl
-                px-4 py-3
-                backdrop-blur-md
-                hover:bg-white/10
-                transition-all duration-500
-                flex flex-col justify-between
-              `}
-                  >
-                    <span className="text-sm font-semibold text-gray-800/90">
-                      {c.name}
-                    </span>
+                  <div key={c.name} className={styles.category_card}>
+                    <span className={styles.category_name}>{c.name}</span>
 
-                    <button
-                      className="
-                  text-xs mt-6
-                  text-amber-400
-                  hover:text-amber-300
-                  self-end
-                "
-                    >
-                      Explore →
-                    </button>
+                    <button className={styles.explore_button}>Explore →</button>
                   </div>
                 );
               })}

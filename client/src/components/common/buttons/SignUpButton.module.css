@@ -1,0 +1,30 @@
+.button {
+  padding-inline: 1.25rem;
+  padding-block: 0.5rem;
+  font-size: 0.87rem;
+  line-height: 1.25rem;
+  border: 1px solid var(--card-border);
+  font-weight: 500;
+  color: color-mix(in srgb, black, transparent 20%);
+  background: linear-gradient(to right, var(--color-amber-400), rgb(234 179 8));
+  border-radius: 9999px;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
+  cursor: pointer;
+
+
+  transition-property:
+    color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+
+  transition-duration: 150ms;
+
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
